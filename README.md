@@ -1,8 +1,9 @@
 # How to load the different views within a DataTemplate based on a condition?
 
-This article demonstrates how to load different views within a CellTemplate based using the DataTemplateSelector in a .NET [MAUI DataGrid](https://www.syncfusion.com/maui-controls/maui-datagrid).
+This article demonstrates how to load different views within a [CellTemplate](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.DataGrid.DataGridTemplateColumn.html#Syncfusion_Maui_DataGrid_DataGridTemplateColumn_CellTemplate) based using the DataTemplateSelector in a .NET [MAUI DataGrid](https://www.syncfusion.com/maui-controls/maui-datagrid).
 
-**Step: 1** Define the two `DataTemplate` with the required control with unique key values in the corresponding ContentPage ResourceDictionary.  
+
+**Step 1:** Define two `DataTemplate` objects with the required controls, each assigned a unique key value in the corresponding ContentPage ResourceDictionary.
 
  
  ```xml
@@ -31,7 +32,7 @@ This article demonstrates how to load different views within a CellTemplate base
 
  ```
 
-**Step: 2** Implement the custom class extends from the `DataTemplateSelector`. In that class, define the required DataTemplate properties to display in the CellTemplate. Based on the condition, return the corresponding DataTemplate.
+**Step 2:** Implement a custom class that extends `DataTemplateSelector`. In this class, define the necessary DataTemplate properties to display in the CellTemplate. Based on a condition, return the corresponding DataTemplate.
 
  
  ```C#
@@ -51,7 +52,7 @@ This article demonstrates how to load different views within a CellTemplate base
  
  ```
 
-**Step: 3** Bind the `DataTemplateSelector.DataTemplate` properties with the respective `DataTemplate` key values in the `DataGridTemplateColumn.CellTemplate`.
+**Step 3:** Bind the `DataTemplateSelector.DataTemplate` properties with the respective `DataTemplate` key values in the `DataGridTemplateColumn.CellTemplate`.
 
  
  ```xml
@@ -87,3 +88,9 @@ This article demonstrates how to load different views within a CellTemplate base
             </dataGrid:DataGridTemplateColumn>
         </dataGrid:SfDataGrid.Columns>
  ```
+
+
+ 
+ ![DataGrid-template-selector.png](https://support.syncfusion.com/kb/agent/attachment/inline?token=eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE5MTQ1Iiwib3JnaWQiOiIzIiwiaXNzIjoic3VwcG9ydC5zeW5jZnVzaW9uLmNvbSJ9.JSUh1IsKZdGLc3f1_BPHX9makVhwF2q41PCgf0cNKYI)
+
+Download the complete sample in [GitHub](https://github.com/SyncfusionExamples/How-to-load-the-different-views-within-a-DataTemplate-based-on-a-condition).
