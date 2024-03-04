@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiApp1"
+             xmlns:dataGrid="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             x:Class="MauiApp1.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:OrderInfoRepository x:Name="viewModel"/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="trackButton">
+                <Button Text="Track Order" 
+                        WidthRequest="120"
+                        TextColor="Black" 
+                        BackgroundColor="GreenYellow" 
+                        HorizontalOptions="Center" 
+                        VerticalOptions="Center" 
+                        Clicked="Track_Order_Button_Clicked"/>
+            </DataTemplate>
+            <DataTemplate x:Key="detailsbutton">
+                <Button Text="Check Details" 
+                        WidthRequest="120"
+                        TextColor="Black"  
+                        BackgroundColor="PaleVioletRed"
+                        HorizontalOptions="Center" 
+                        VerticalOptions="Center" 
+                        Clicked="Check_Details_Button_Clicked"/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <dataGrid:SfDataGrid x:Name="dataGrid"
+                         AutoGenerateColumnsMode="None"
+                         ItemsSource="{Binding OrderInfoCollection}">
+        <dataGrid:SfDataGrid.Columns>
+            <dataGrid:DataGridTextColumn MappingName="OrderID" 
+                                         Width="100"
+                                         HeaderText="Order ID"/>
+            <dataGrid:DataGridTextColumn MappingName="CustomerID" 
+                                         Width="110"
+                                         HeaderText="Customer ID"/>
+            <dataGrid:DataGridTextColumn MappingName="Customer" 
+                                         Width="150"
+                                         HeaderText="Customer Name"/>
+            <dataGrid:DataGridTextColumn MappingName="ShipCity" 
+                                         Width="100"
+                                         HeaderText="Ship City"/>
+            <dataGrid:DataGridTextColumn MappingName="ShipCountry"
+                                         Width="120"
+                                         HeaderText="Ship Country"/>
+            <dataGrid:DataGridDateColumn MappingName="ShippedDate" 
+                                         Width="120"
+                                         CellTextAlignment="Start"
+                                         HeaderText="Shipped Date"/>
+            <dataGrid:DataGridTextColumn MappingName="Price" 
+                                         Width="70"
+                                         HeaderText="Price"/>
+            <dataGrid:DataGridTemplateColumn HeaderText="Status"
+                                             Width="150">
+                <dataGrid:DataGridTemplateColumn.CellTemplate>
+                    <local:DetailsTemplateSelector TrackOrderButton="{StaticResource trackButton}"
+                                                   CheckDetailsButton="{StaticResource detailsbutton}"/>
+                </dataGrid:DataGridTemplateColumn.CellTemplate>
+            </dataGrid:DataGridTemplateColumn>
+        </dataGrid:SfDataGrid.Columns>
+    </dataGrid:SfDataGrid>
+</ContentPage>
